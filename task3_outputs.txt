@@ -1,0 +1,65 @@
+mysql> SELECT * FROM customers;
++-------------+------------+------------------------+---------+
+| customer_id | name       | email                  | country |
++-------------+------------+------------------------+---------+
+|           1 | John Doe   | john.doe@example.com   | USA     |
+|           2 | Jane Smith | jane.smith@example.com | UK      |
+|           3 | Raj Kumar  | raj.kumar@example.com  | India   |
++-------------+------------+------------------------+---------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT
+    ->     o.order_id,
+    ->     c.name AS customer_name,
+    ->     o.order_date,
+    ->     o.amount
+    -> FROM orders o
+    -> JOIN customers c ON o.customer_id = c.customer_id;
++----------+---------------+------------+--------+
+| order_id | customer_name | order_date | amount |
++----------+---------------+------------+--------+
+|      101 | John Doe      | 2025-04-01 | 500.00 |
+|      102 | Jane Smith    | 2025-04-02 | 300.00 |
+|      103 | Raj Kumar     | 2025-04-03 | 150.00 |
++----------+---------------+------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT
+    ->     product_name,
+    ->     SUM(quantity) AS total_quantity
+    -> FROM order_items
+    -> GROUP BY product_name
+    -> ORDER BY total_quantity DESC
+    -> LIMIT 1;
++--------------+----------------+
+| product_name | total_quantity |
++--------------+----------------+
+| Headphones   |              2 |
++--------------+----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT
+    ->     c.name AS customer_name,
+    ->     SUM(o.amount) AS total_sales
+    -> FROM customers c
+    -> JOIN orders o ON c.customer_id = o.customer_id
+    -> GROUP BY c.name;
++---------------+-------------+
+| customer_name | total_sales |
++---------------+-------------+
+| John Doe      |      500.00 |
+| Jane Smith    |      300.00 |
+| Raj Kumar     |      150.00 |
++---------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT *
+    -> FROM orders
+    -> WHERE order_date > '2025-04-01';
++----------+-------------+------------+--------+
+| order_id | customer_id | order_date | amount |
++----------+-------------+------------+--------+
+|      102 |           2 | 2025-04-02 | 300.00 |
+|      103 |           3 | 2025-04-03 | 150.00 |
++----------+-------------+------------+--------+
+2 rows in set (0.00 sec)
