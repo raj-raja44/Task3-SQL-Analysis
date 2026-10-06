@@ -68,6 +68,17 @@ The project includes SQL queries for:
 - Learned to analyze relational datasets
 - Developed practical SQL skills for data analysis
 
+## 📸 SQL Query Results
+
+### Query Result 1
+![SQL Query Result 1](Screenshot%202025-04-10%20153914.png)
+
+### Query Result 2
+![SQL Query Result 2](Screenshot%202025-04-10%20153936.png)
+
+### Query Result 3
+![SQL Query Result 3](Screenshot%202025-04-10%20153950.png)
+
 ## 👨‍💻 Author
 
 **Raju Otlam**
